@@ -1,35 +1,8 @@
-import { useState } from "react";
 import { PiFolderNotchPlusFill } from "react-icons/pi";
 import { FcFolder } from "react-icons/fc";
-import { useDispatch } from "react-redux";
-import { createMainFolders, getMainFolders } from "../features/mainFolderSlice";
-import { toast } from "react-hot-toast";
 
-const CreateFolder = () => {
-  const [showFolder, setShowFolder] = useState(false);
-  const dispatch = useDispatch();
-
+const CreateFolder = ({ showFolder, setShowFolder, handleCreateFolder }) => {
   const createFolder = () => {
-    setShowFolder(!showFolder);
-  };
-
-  // Create new main folder
-  const handleCreateFolder = (e) => {
-    e.preventDefault();
-    const name = e.target.value;
-
-    const data = { name };
-
-    dispatch(createMainFolders(data)).then((res) => {
-      if (res.meta.requestStatus === "fulfilled") {
-        toast.success("Folder Created!");
-      } else {
-        toast.error("Couldn't create folder");
-      }
-      dispatch(getMainFolders());
-    });
-    console.log(`Create folder ${name}`);
-
     setShowFolder(!showFolder);
   };
 
