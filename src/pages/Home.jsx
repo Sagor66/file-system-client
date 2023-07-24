@@ -5,15 +5,17 @@ import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 
 const Home = () => {
-  const { isLoading, mainFolders, error } = useSelector(
+  const { mainFolders } = useSelector(
     (state) => state.mainFolders
   );
   const dispatch = useDispatch();
 
+  // Getting all the main folders
   useEffect(() => {
     dispatch(getMainFolders());
   }, [dispatch]);
 
+  // Delete Main Folder
   const handleDeleteMainFolder = (id) => {
     dispatch(deleteMainFolders(id)).then((res) => {
       if (res.meta.requestStatus === "fulfilled") {
@@ -24,6 +26,7 @@ const Home = () => {
       dispatch(getMainFolders());
     });
   };
+  
   return (
     <div className="grid grid-cols-4 gap-5">
       {mainFolders.map((mainFolder) => (

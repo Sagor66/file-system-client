@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./app/store.js";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home.jsx";
+import Nested from "./pages/Nested.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/nested',
+        element: <Nested></Nested>
       }
     ]
   },

@@ -13,6 +13,7 @@ const CreateFolder = () => {
     setShowFolder(!showFolder);
   };
 
+  // Create new main folder
   const handleCreateFolder = (e) => {
     e.preventDefault();
     const name = e.target.value;
