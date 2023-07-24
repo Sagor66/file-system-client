@@ -1,26 +1,37 @@
 import { useState } from "react";
 import { PiFolderNotchPlusFill } from "react-icons/pi";
 import { FcFolder } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { createMainFolders, getMainFolders } from "../features/mainFolderSlice";
 
 const CreateFolder = () => {
   const [showFolder, setShowFolder] = useState(false);
+  const dispatch = useDispatch();
 
   const createFolder = () => {
     setShowFolder(!showFolder);
   };
 
   const handleCreateFolder = (e) => {
-    e.preventDefault()
-    const name = e.target.value
-    console.log(`Create folder ${name}`)
-    setShowFolder(!showFolder)
-  }
-  
-  const handleKeyPress = e => {
+    e.preventDefault();
+    const name = e.target.value;
+
+    const data = { name }
+
+    dispatch(createMainFolders(data)).then((res) => {
+      console.log(res);
+      dispatch(getMainFolders())
+    });
+    console.log(`Create folder ${name}`);
+
+    setShowFolder(!showFolder);
+  };
+
+  const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleCreateFolder(e)
+      handleCreateFolder(e);
     }
-  }
+  };
 
   return (
     <div className="flex items-center gap-5">
