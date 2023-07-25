@@ -18,8 +18,8 @@ const Nested = () => {
 
   // Getting all the main folders
   useEffect(() => {
-    dispatch(getChildFolders());
-  }, [dispatch]);
+    dispatch(getChildFolders(id));
+  }, [dispatch, id]);
 
   // Create Child Folder
   const handleCreateFolder = (e) => {
@@ -35,7 +35,7 @@ const Nested = () => {
       } else {
         toast.error("Couldn't create folder");
       }
-      dispatch(getChildFolders());
+      dispatch(getChildFolders(id));
     });
     console.log(`Create folder ${name}`);
 
@@ -50,9 +50,11 @@ const Nested = () => {
       } else {
         toast.error("Couldn't delete the folder");
       }
-      dispatch(getChildFolders());
+      dispatch(getChildFolders(id));
     });
   };
+
+  console.log({ childFolders })
 
   return (
     <>

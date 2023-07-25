@@ -1,9 +1,15 @@
 import { FcFolder } from "react-icons/fc";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-const Folder = ({ folder, handleDeleteFolder }) => {
+const Folder = ({ folder, handleDeleteFolder, key }) => {
   const { name, id } = folder;
+
+  useEffect(() => {
+    console.log({ folder, key })
+  }, [folder, key])
+
   return (
     <div className="relative">
       <button

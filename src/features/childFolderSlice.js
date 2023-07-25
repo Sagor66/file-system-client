@@ -4,8 +4,8 @@ import axios from "axios";
 // Get All Folders
 export const getChildFolders = createAsyncThunk(
   "childFolders/getChildFolders",
-  async () => {
-    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/childFolder`);
+  async (id) => {
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/childFolder/${id}`);
     return res.data;
   }
 );
